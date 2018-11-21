@@ -50,20 +50,9 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
 
-        <div id="page-content-wrapper">
-
-      <div class="container mx-auto w-50 py-1 px-1 mt-4">
-        <textarea rows="10" cols="80">
-          At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
-        </textarea>
-          Topic: <input type="text" name="Topic" value="eg: Landscapes">
-        <input type="submit" value="Submit">
-
-      </div>
-      
     <div class="container mx-auto w-50 py-1 px-1 mt-4">
       {{#each posts}}
-      {{> posts/post-block topic=true user=true}}
+      {{> posts/post-block user=true}}
       {{/each}}
     </div>
   </div>
