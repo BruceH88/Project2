@@ -1,8 +1,13 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "sapwd",
     "database": "project2",
+=======
+    "password": "password",
+    "database": "database_dev",
+>>>>>>> 52a2c7ed6985d32439765ff038fcb34c2679e16c
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
