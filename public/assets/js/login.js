@@ -1,47 +1,92 @@
 $(document).ready(function () {
   // Getting references to our form and inputs
   const loginForm = $("form.login");
-  const usernameInput = $("#username-input");
+  const signupForm = $("form.signup");
+  const userNameInput = $("#username-input");
   const passwordInput = $("#password-input");
-  
-  loginForm.on("submit", function (event) {
-    console.log("Login clicked");
-    event.preventDefault();
-    window.location.replace("/api/posts");
-  });
+  const firstNameInput = $("#firstname-input");
+  const lastNameInput = $("#lastname-input");
+  const emailInput = $("#email-input");
 
-  // // When the form is submitted, we validate there's an email and password entered
   // loginForm.on("submit", function (event) {
-  //   console.log("Login clicked")
+  //   console.log("Login clicked");
   //   event.preventDefault();
-  //   var userData = {
-  //     username: usernameInput.val().trim(),
-  //     password: passwordInput.val().trim(),
-  //   };
-  //   // console.log(userData)
-  //   if (!userData.username || !userData.password) {
-  //     return;
-  //   }
-
-  //   // If we have an email and password we run the loginUser function and clear the form
-  //   loginUser(userData.username, userData.password);
-  //   usernameInput.val('');
-  //   passwordInput.val('');
+  //   window.location.replace("/api/posts");
   // });
 
-  // // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-  // function loginUser(username, password) {
-  //   console.log("calling api")
-  //   $.post("/api/login", {
-  //     username: username,
-  //     password: password,
-  //   }).then(function (data) {
-  //     // console.log(data);
-  //     window.location.replace(data);
-  //     // If there's an error, log the error
-  //   }).catch(function (err) {
-  //     console.log(err);
-  //   });
-  // }
+  loginForm.on("submit", function (event) {
+    console.log("Login clicked")
+    event.preventDefault();
+
+    // When the form is submitted, we validate there's an username and password entered
+    var userData = {
+      userName: userNameInput.val().trim(),
+      password: passwordInput.val().trim(),
+    };
+    // console.log(userData)
+    if (!userData.userName || !userData.password) {
+      return;
+    }
+
+    // If we have an email and password we run the loginUser function and clear the form
+    loginUser(userData);
+    userNameInput.val('');
+    passwordInput.val('');
+  });
+
+  // loginUser does a post to our "api/login" route and if successful, redirects us the posts page
+  function loginUser(userData) {
+    console.log("calling api");
+    console.log(userData);
+    $.post("/api/login", 
+      userData
+    ).then(function (data) {
+      console.log(data);
+      window.location.replace(data);
+      // If there's an error, log the error
+    }).catch(function (err) {
+      console.log(err);
+    });
+  }
+
+  // signup and and a new user to user table
+  signupForm.on("submit", function (event) {
+    console.log("Sign up clicked")
+    event.preventDefault();
+    // When the form is submitted, we validate there's an email and password entered
+    var userData = {
+      userName: userNameInput.val().trim(),
+      password: passwordInput.val().trim(),
+      firstName: firstNameInput.val().trim(),
+      lastName: lastNameInput.val().trim(),
+      email: emailInput.val().trim()
+    };
+
+    console.log(userData);
+    if (!userData.email || !userData.password || !userData.firstName || !userData.lastName || !userData.email) {
+      return;
+    }
+
+    // If we have an email and password we run the loginUser function and clear the form
+    signupUser(userData);
+    userNameInput.val('');
+    passwordInput.val('');
+    firstNameInput.val('');
+    lastNameInput.val('');
+    emailInput.val('');
+  });
+
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+  function signupUser(userData) {
+    console.log("Add user");
+    $.post("/api/signup", 
+      userData
+    ).then(function (data) {
+      window.location.replace(data);
+      // If there's an error, log the error
+    }).catch(function (err) {
+      console.log(err);
+    });
+  }
 
 });

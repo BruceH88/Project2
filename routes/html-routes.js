@@ -21,7 +21,14 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/assets/inTopic.html"));
   });
 
-  // index route loads view.html
+
+  // signup route takes you to page to sign up
+  app.get("/signup", function (req, res) {
+    // res.sendFile(path.join(__dirname, "../public/assets/index.html"));
+    res.render("signup");
+  });
+
+  // default route takes you to the login page
   app.get("/", function (req, res) {
     // res.sendFile(path.join(__dirname, "../public/assets/index.html"));
     res.render("login");

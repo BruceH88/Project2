@@ -26,12 +26,13 @@ module.exports = function (app) {
         })
     });
 
-    // create a new user  --- worked
-    app.post("/api/users/newUser", function (req, res) {
-        db.User.create(req.body).then(function (dbUser) {
-            res.json(dbUser);
-        });
-    });
+    // Done in login-api-routes.js
+    // // create a new user  --- worked
+    // app.post("/api/users/newUser", function (req, res) {
+    //     db.User.create(req.body).then(function (dbUser) {
+    //         res.json(dbUser);
+    //     });
+    // });
 
 
     // All the routes for Posts
@@ -42,7 +43,7 @@ module.exports = function (app) {
             include: [db.User]
         }).then(function (dbPost) {
             console.log(JSON.stringify(dbPost));
-            res.render("index", {posts: dbPost});
+            res.render("index", { posts: dbPost });
             // res.json(dbPost);
         });
 
