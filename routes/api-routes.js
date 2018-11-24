@@ -4,30 +4,7 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-    // create a new user  --- worked
-    app.post("/api/users/newUser", function (req, res) {
-        db.User.create(req.body).then(function (dbUser) {
-            res.json(dbUser);
-        });
-    });
-
-
-    // get all the information, including users' info and post of the user  --- worked
-    app.get("/api/users", function (req, res) {
-        db.User.findAll({
-            include: [db.Post]
-        }).then(function (dbUser) {
-            res.json(dbUser);
-        })
-    });
-
-    //post a new post 
-    app.post("/api/posts", function (req, res) {
-        db.Post.create(req.body).then(function (dbPost) {
-            res.json(dbPost);
-        });
-    });
-
+    // all the routers for the users 
     //get this user's post
     app.get("/api/users/:id", function (req, res) {
         db.User.findOne({
@@ -40,23 +17,61 @@ module.exports = function (app) {
         });
     });
 
-    // GET route for getting all of the posts  -------- worked
-    app.get("/api/posts", function (req, res) {
-        var query = {};
-        if (req.query.user_id) {
-            query.UserId = req.query.user_id;
-        }
-        // Here we add an "include" property to our options in our findAll query
-        // We set the value to an array of the models we want to include in a left outer join
-        // In this case, just db.User
-        db.Post.findAll({
-            where: query,
-            include: [db.User]
-        }).then(function (dbPost) {
-            res.json(dbPost);
+    // get all the information, including users' info and post of the user  --- worked
+    app.get("/api/users", function (req, res) {
+        db.User.findAll({
+            include: [db.Post]
+        }).then(function (dbUser) {
+            res.json(dbUser);
+        })
+    });
+
+    // create a new user  --- worked
+    app.post("/api/users/newUser", function (req, res) {
+        db.User.create(req.body).then(function (dbUser) {
+            res.json(dbUser);
         });
     });
 
+
+    // All the routes for Posts
+    // GET route for getting all of the posts  -------- worked
+    app.get("/api/posts", function (req, res) {
+
+        db.Post.findAll({
+            include: [db.User]
+        }).then(function (dbPost) {
+            console.log(JSON.stringify(dbPost));
+            res.render("index", {posts: dbPost});
+            // res.json(dbPost);
+        });
+
+    });
+
+    // app.get("/api/posts", function (req, res) {
+    //     var query = {};
+    //     if (req.query.user_id) {
+    //         query.UserId = req.query.user_id;
+    //     }
+    //     // Here we add an "include" property to our options in our findAll query
+    //     // We set the value to an array of the models we want to include in a left outer join
+    //     // In this case, just db.User
+    //     db.Post.findAll({
+    //         where: query,
+    //         include: [db.User]
+    //     }).then(function (dbPost) {
+    //         console.log(dbPost);
+    //         res.render(dbPost);
+    //         // res.json(dbPost);
+    //     });
+    // });
+
+    //post a new post 
+    app.post("/api/posts", function (req, res) {
+        db.Post.create(req.body).then(function (dbPost) {
+            res.json(dbPost);
+        });
+    });
 
     // PUT route for updating posts
     app.put("/api/posts", function (req, res) {
@@ -82,7 +97,7 @@ module.exports = function (app) {
         });
     });
 
-
+    // All the routes for Topics
     //create a new topic   ------ worked
     app.post("/api/topics", function (req, res) {
         db.Topic.create(req.body).then(function (dbTopic) {

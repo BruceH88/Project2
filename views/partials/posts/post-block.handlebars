@@ -4,13 +4,14 @@
   {{#if imgSrc}}
   <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
   {{/if}}
+  
 
-  <p class="text-left py-2">{{text}}</p>
+  <p class="text-left py-2">{{body}}</p>
 
   <p class="text-right font-italic">-posted 
     {{#if topic}} in <a href="/topics/{{topic}}">{{topic}}</a>{{/if}}
 
-    {{#if user}} by <a href="/users/{{user}}">{{user}}</a>{{/if}}
+    {{#if username}} by <a href="/users/{{username}}">{{user}}</a>{{/if}}
 
 
 </div>
