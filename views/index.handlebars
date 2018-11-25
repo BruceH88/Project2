@@ -17,7 +17,7 @@
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
         <a href="#">
-          <img src="public/assets/Images/defpp.jpg" alt="profile" width="40px" class="rounded-circle">
+          <img src="/assets/Images/defpp.jpg" alt="profile" width="40px" class="rounded-circle">
           (User)'s Profile
         </a>
       </li>
@@ -50,20 +50,37 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
 
-        <div id="page-content-wrapper">
+    <div class="container mx-auto w-50 py-1 px-1 mt-4">
+      <textarea id="postInput" rows="10" cols="80">
 
-      <div class="container mx-auto w-50 py-1 px-1 mt-4">
-        <textarea rows="10" cols="80">
-          At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
         </textarea>
-          Topic: <input type="text" name="Topic" value="eg: Landscapes">
-        <input type="submit" value="Submit">
+      Topic: <input id="topicInput" type="text" name="Topic" placeholder="eg: Landscapes">
+      <input class="postSubmit" type="submit" value="Submit">
 
-      </div>
-      
+    </div>
+
     <div class="container mx-auto w-50 py-1 px-1 mt-4">
       {{#each posts}}
-      {{> posts/post-block topic=true user=true}}
+
+
+      <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded">
+        <p class="text-right font-italic mb-1">{{createdAt}}</p>
+
+        {{#if imgSrc}}
+        <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
+        {{/if}}
+
+
+        <p class="text-left py-2">{{body}}</p>
+
+        <p class="text-right font-italic">-posted
+          {{#if topic}} in <a href="/topics/{{topic}}">{{topic}}</a>{{/if}}
+
+          {{#if User.userName}} by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
+
+
+      </div>
+      {{!-- {{> posts/post-block topic=true user=true}} --}}
       {{/each}}
     </div>
   </div>
