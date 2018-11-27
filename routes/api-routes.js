@@ -38,16 +38,34 @@ module.exports = function (app) {
     // All the routes for Posts
     // GET route for getting all of the posts  -------- worked
     app.get("/api/posts", function (req, res) {
+        if (!req.user) {
+            return res.redirect("/");
+        }
 
         db.Post.findAll({
-            include: [db.User]
-        }).then(function (dbPost) {
-            console.log(JSON.stringify(dbPost));
-            res.render("index", { posts: dbPost });
-            // res.json(dbPost);
+            include: [db.User, db.Topic]
+        }).then(function (dbPosts) {
+            console.log(JSON.stringify(dbPosts));
+            res.render("index", { posts: dbPosts });
         });
 
     });
+
+    app.get("/api/posts/topics/:id", function(req, res){
+        if (!req.user) {
+            return res.redirect("/");
+        }
+        
+        db.Post.findAll({
+            where: {
+                TopicId: req.params.id
+            },
+            include: [db.User, db.Topic]
+        }).then(function (dbPosts) {
+            console.log(JSON.stringify(dbPosts));
+            res.render("index", { posts: dbPosts });
+        });
+    })
 
     // app.get("/api/posts", function (req, res) {
     //     var query = {};
@@ -99,12 +117,24 @@ module.exports = function (app) {
     });
 
     // All the routes for Topics
+    // GET route for getting all of the topics
+    app.get("/api/topics", function (req, res) {
+        if (!req.user) {
+            return res.redirect("/");
+        }
+        db.Topic.findAll().then(function (dbTopics) {
+            console.log(JSON.stringify(dbTopics));
+            res.render("topic", { topics: dbTopics });
+        });
+    });
+
     //create a new topic   ------ worked
     app.post("/api/topics", function (req, res) {
         db.Topic.create(req.body).then(function (dbTopic) {
             res.json(dbTopic);
         });
     });
+
 
 }
 

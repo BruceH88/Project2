@@ -8,12 +8,6 @@ $(document).ready(function () {
   const lastNameInput = $("#lastname-input");
   const emailInput = $("#email-input");
 
-  // loginForm.on("submit", function (event) {
-  //   console.log("Login clicked");
-  //   event.preventDefault();
-  //   window.location.replace("/api/posts");
-  // });
-
   loginForm.on("submit", function (event) {
     console.log("Login clicked")
     event.preventDefault();

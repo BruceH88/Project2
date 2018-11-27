@@ -24,11 +24,11 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       });
-      // Post.belongsTo(models.Topic, {
-      //   foreignKey: {
-      //     allowNull: false
-      //   }
-      // });
+      Post.belongsTo(models.Topic, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
     };
     return Post;
   };
