@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-md py-4 mb-0 sticky-top" id="top-nav">
+  <a class="navbar-brand page-title" id="" href="index.html">Untitled Social Media Platform</a>
+  <a href="#" class="ml-auto mr-4 page-title">(User)</a>
+  <a href="#" class="mr-4 page-title">Categories</a>
+  <a href="#menu-toggle" class="btn btn-secondary sidebar-toggle">Toggle Menu</a>
+</nav>
+
+<!-- <button type="button" class="btn btn-default rounded-circle" aria-label="Left Align"> -->
+
+<h2 id="arrow" class="arrow-hide"><a><span class="badge badge-light"><i class="fas fa-arrow-circle-right"></i></span></a></h2>
+<!-- </button> -->
+
+<div id="wrapper" class="toggled">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">
+          <img src="/public/assets/Images/defpp.jpg" alt="profile" width="40px" class="rounded-circle">
+          (User)'s Profile
+        </a>
+      </li>
+      <li>
+        <a href="#">Global Feed</a>
+      </li>
+      <li>
+        <a href="#">Topics</a>
+      </li>
+      <li>
+        <a href="#">Overview</a>
+      </li>
+      <li>
+        <a href="#">Events</a>
+      </li>
+      <br><br><br>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Services</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <div class="container mx-auto w-75 py-1 px-1 mt-4 ">
+      <h4 class="text-center">
+        <a href="/topicList/a" class="border-right pr-2">A</a>
+        <a href="/topicList/b" class="border-right pr-2">B</a>
+        <a href="/topicList/c" class="border-right pr-2">C</a>
+        <a href="/topicList/d" class="border-right pr-2">D</a>
+        <a href="/topicList/e" class="border-right pr-2">E</a>
+        <a href="/topicList/f" class="border-right pr-2">F</a>
+        <a href="/topicList/g" class="border-right pr-2">G</a>
+        <a href="/topicList/h" class="border-right pr-2">H</a>
+        <a href="/topicList/i" class="border-right pr-2">I</a>
+        <a href="/topicList/j" class="border-right pr-2">J</a>
+        <a href="/topicList/k" class="border-right pr-2">K</a>
+        <a href="/topicList/l" class="border-right pr-2">L</a>
+        <a href="/topicList/m" class="border-right pr-2">M</a>
+        <a href="/topicList/n" class="border-right pr-2">N</a>
+        <a href="/topicList/o" class="border-right pr-2">O</a>
+        <a href="/topicList/p" class="border-right pr-2">P</a>
+        <a href="/topicList/q" class="border-right pr-2">Q</a>
+        <a href="/topicList/r" class="border-right pr-2">R</a>
+        <a href="/topicList/s" class="border-right pr-2">S</a>
+        <a href="/topicList/t" class="border-right pr-2">T</a>
+        <a href="/topicList/u" class="border-right pr-2">U</a>
+        <a href="/topicList/v" class="border-right pr-2">V</a>
+        <a href="/topicList/w" class="border-right pr-2">W</a>
+        <a href="/topicList/x" class="border-right pr-2">X</a>
+        <a href="/topicList/y" class="border-right pr-2">Y</a>
+        <a href="/topicList/z" class="">Z</a>
+
+        <!-- A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z -->
+      </h4>
+    </div>
+    <h1 class="text-center main-color">A</h1>
+
+    <br>
+    <ul id="newspaper" class="main-color">
+      {{#each topics}}
+      <p> {{name}}</p>
+
+      {{/each}}
+    </ul>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>

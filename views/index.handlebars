@@ -54,10 +54,22 @@
       <textarea id="postInput" rows="10" cols="80">
 
         </textarea>
-      Topic: <input id="topicInput" type="text" name="Topic" placeholder="eg: Landscapes">
-      <input class="postSubmit" type="submit" value="Submit">
+      <form autocomplete="off">
+        <div class="autocomplete" style="width:300px;">
+          Topic: <input id="topicInput" type="text" name="Topic" placeholder="eg: Landscapes">
+        </div>
+        <input type="submit" class="postSubmit" value="Submit">
+      </form>
 
     </div>
+
+
+    {{!-- <form autocomplete="off" action="/action_page.php">
+      <div class="autocomplete" style="width:300px;">
+        <input id="myInput" type="text" name="myCountry" placeholder="Country">
+      </div>
+      <input type="submit">
+    </form> --}}
 
     <div class="container mx-auto w-50 py-1 px-1 mt-4">
       {{#each posts}}
