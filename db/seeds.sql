@@ -1,7 +1,7 @@
 USE project2;
 
 INSERT INTO users 
-	(userName, firstName, lastName, email, passwords, createdAt, updatedAt)
+	(userName, firstName, lastName, email, password, createdAt, updatedAt)
 VALUES
   ("tester", "test", "account", "tester@gmail.com", 0, "2018-11-23 12:00", "2018-11-23 12:00");
 
