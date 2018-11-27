@@ -18,11 +18,58 @@
 
 <body class=" px-0 mx-0">
 
+  <nav class="navbar navbar-expand-md py-4 mb-0 sticky-top" id="top-nav">
+    <a class="navbar-brand page-title" id="" href="index.html">Untitled Social Media Platform</a>
+    <a href="#" class="ml-auto mr-4 page-title">(User)</a>
+    <a href="#" class="mr-4 page-title">Categories</a>
+    <a href="#menu-toggle" class="btn btn-secondary sidebar-toggle">Toggle Menu</a>
+  </nav>
+  <!-- <button type="button" class="btn btn-default rounded-circle" aria-label="Left Align"> -->
+
+  <h2 id="arrow" class="arrow-hide"><a><span class="badge badge-light"><i class="fas fa-arrow-circle-right"></i></span></a></h2>
+  <!-- </button> -->
+
+  <div id="wrapper" class="toggled">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">
+            <img src="/assets/Images/defpp.jpg" alt="profile" width="40px" class="rounded-circle">
+            <span id="displayUserName"></span> Profile
+          </a>
+        </li>
+        <li>
+          <a href="/api/posts">Global Feed</a>
+        </li>
+        <li>
+          <a href="/api/topics">Topics</a>
+        </li>
+        <li>
+          <a href="#">Overview</a>
+        </li>
+        <li>
+          <a href="#">Events</a>
+        </li>
+        <br><br><br>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Services</a>
+        </li>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+  </div>
 
   {{{body}}}
 
-
-    <footer class="page-footer bg-light py-4 mt-4">
+  <footer class="page-footer bg-light py-4 mt-4">
 
     <div class="footer-copyright container ">
       <div class="row align-items-center">

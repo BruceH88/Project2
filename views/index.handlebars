@@ -1,89 +1,39 @@
-<nav class="navbar navbar-expand-md py-4 mb-0 sticky-top" id="top-nav">
-  <a class="navbar-brand page-title" id="" href="index.html">Untitled Social Media Platform</a>
-  <a href="#" class="ml-auto mr-4 page-title">(User)</a>
-  <a href="#" class="mr-4 page-title">Categories</a>
-  <a href="#menu-toggle" class="btn btn-secondary sidebar-toggle">Toggle Menu</a>
-</nav>
+<!-- Page Content -->
+<div id="page-content-wrapper">
 
-<!-- <button type="button" class="btn btn-default rounded-circle" aria-label="Left Align"> -->
-
-<h2 id="arrow" class="arrow-hide"><a><span class="badge badge-light"><i class="fas fa-arrow-circle-right"></i></span></a></h2>
-<!-- </button> -->
-
-<div id="wrapper" class="toggled">
-
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a href="#">
-          <img src="/assets/Images/defpp.jpg" alt="profile" width="40px" class="rounded-circle">
-          (User)'s Profile
-        </a>
-      </li>
-      <li>
-        <a href="#">Global Feed</a>
-      </li>
-      <li>
-        <a href="#">Topics</a>
-      </li>
-      <li>
-        <a href="#">Overview</a>
-      </li>
-      <li>
-        <a href="#">Events</a>
-      </li>
-      <br><br><br>
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#">Services</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
-      </li>
-    </ul>
-  </div>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-
-    <div class="container mx-auto w-50 py-1 px-1 mt-4">
-      <textarea id="postInput" rows="10" cols="80">
+  <div class="container mx-auto w-50 py-1 px-1 mt-4">
+    <textarea id="postInput" rows="10" cols="80">
 
         </textarea>
-      Topic: <input id="topicInput" type="text" name="Topic" placeholder="eg: Landscapes">
-      <input class="postSubmit" type="submit" value="Submit">
+    Topic: <input id="topicInput" type="text" name="Topic" placeholder="eg: Landscapes">
+    <input class="postSubmit" type="submit" value="Submit">
 
-    </div>
-
-    <div class="container mx-auto w-50 py-1 px-1 mt-4">
-      {{#each posts}}
-
-
-      <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded">
-        <p class="text-right font-italic mb-1">{{createdAt}}</p>
-
-        {{#if imgSrc}}
-        <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
-        {{/if}}
-
-
-        <p class="text-left py-2">{{body}}</p>
-
-        <p class="text-right font-italic">-posted
-          {{#if topic}} in <a href="/topics/{{topic}}">{{topic}}</a>{{/if}}
-
-          {{#if User.userName}} by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
-
-
-      </div>
-      {{!-- {{> posts/post-block topic=true user=true}} --}}
-      {{/each}}
-    </div>
   </div>
-  <!-- /#page-content-wrapper -->
+
+  <div class="container mx-auto w-50 py-1 px-1 mt-4">
+    {{#each posts}}
+
+
+    <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded">
+      <p class="text-right font-italic mb-1">{{createdAt}}</p>
+
+      {{#if imgSrc}}
+      <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
+      {{/if}}
+
+
+      <p class="text-left py-2">{{body}}</p>
+
+      <p class="text-right font-italic">-posted
+        {{#if Topic.topic}} in <a href="/topics/{{Topic.id}}">{{Topic.topic}}</a>{{/if}}
+
+        {{#if User.userName}} by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
+
+
+    </div>
+    {{!-- {{> posts/post-block topic=true user=true}} --}}
+    {{/each}}
+  </div>
 
 </div>
+<!-- /#page-content-wrapper -->
