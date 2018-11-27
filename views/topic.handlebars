@@ -1,58 +1,17 @@
-<nav class="navbar navbar-expand-md py-4 mb-0 sticky-top" id="top-nav">
-  <a class="navbar-brand page-title" id="" href="index.html">Untitled Social Media Platform</a>
-  <a href="#" class="ml-auto mr-4 page-title">(User)</a>
-  <a href="#" class="mr-4 page-title">Categories</a>
-  <a href="#menu-toggle" class="btn btn-secondary sidebar-toggle">Toggle Menu</a>
-</nav>
-
-<!-- <button type="button" class="btn btn-default rounded-circle" aria-label="Left Align"> -->
-
-<h2 id="arrow" class="arrow-hide"><a><span class="badge badge-light"><i class="fas fa-arrow-circle-right"></i></span></a></h2>
-<!-- </button> -->
-
-<div id="wrapper" class="toggled">
-
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a href="#">
-          <img src="/public/assets/Images/defpp.jpg" alt="profile" width="40px" class="rounded-circle">
-          (User)'s Profile
-        </a>
-      </li>
-      <li>
-        <a href="#">Global Feed</a>
-      </li>
-      <li>
-        <a href="#">Topics</a>
-      </li>
-      <li>
-        <a href="#">Overview</a>
-      </li>
-      <li>
-        <a href="#">Events</a>
-      </li>
-      <br><br><br>
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#">Services</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
-      </li>
-    </ul>
-  </div>
-  <!-- /#sidebar-wrapper -->
-
   <!-- Page Content -->
   <div id="page-content-wrapper">
+  <div class="container mx-auto w-50 py-1 px-1 mt-4">
+    Topic: <input id="topicInput" type="text" name="Topic" placeholder="eg: Landscapes">
+    <input class="topicSubmit" type="submit" value="Submit">
+
+  </div>
 
     <div class="container mx-auto w-50 py-1 px-1 mt-4">
-      {{#each posts}}
-      {{> posts/post-block user=true}}
+      {{#each topics}}
+
+    <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded">
+      <p class="text-right font-italic mb-1"><h3><a href="/api/posts/topics/{{id}}">{{topic}}</a></h3>  - created {{createdAt}}</p>
+    </div>
       {{/each}}
     </div>
   </div>
