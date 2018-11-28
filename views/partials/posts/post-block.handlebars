@@ -1,28 +1,18 @@
 <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded">
+  {{#if topic}} in <a href="/topics/{{topic}}">{{topic}}</a>{{/if}}
   <p class="text-right font-italic mb-1">{{createdAt}}</p>
 
   {{#if imgSrc}}
   <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
   {{/if}}
-  
+
 
   <p class="text-left py-2">{{body}}</p>
 
-  <p class="text-right font-italic">-posted 
-    {{#if topic}} in <a href="/topics/{{topic}}">{{topic}}</a>{{/if}}
+  <p class="text-right font-italic">-posted
 
     {{#if username}} by <a href="/users/{{username}}">{{user}}</a>{{/if}}
 
+    {{> partialNameToLoad a="true" b="false"}}
 
 </div>
-
-
-{{!-- <li>
-  {{name}}
-
-  <button class="change-sleep" data-id="{{id}}" data-newsleep="{{sleep}}">
-    {{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}}
-  </button>
-
-  <button class="delete-cat" data-id="{{this.id}}">DELETE!</button>
-</li> --}}

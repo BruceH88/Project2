@@ -30,8 +30,11 @@ module.exports = function (app) {
 
   // default route takes you to the login page
   app.get("/", function (req, res) {
-    // res.sendFile(path.join(__dirname, "../public/assets/index.html"));
-    res.render("login");
+    if (req.user) {
+      return res.redirect("/api/posts");
+    }
+    res.sendFile(path.join(__dirname, "../public/login.html"));
+    // res.render("login");
   });
 
 };

@@ -21,7 +21,8 @@
 
 
     <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded">
-      <p class="text-right font-italic mb-1">{{createdAt}}</p>
+
+      <p class="text-left font-italic mb-1">{{#if Topic.topic}} -posted in <a href="/topics/{{Topic.id}}" class="topic-link">{{Topic.topic}}</a>{{/if}}</p>
 
       {{#if imgSrc}}
       <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
@@ -30,14 +31,14 @@
 
       <p class="text-left py-2">{{body}}</p>
 
-      <p class="text-right font-italic">-posted
-        {{#if Topic.topic}} in <a href="/api/posts/topics/{{Topic.id}}">{{Topic.topic}}</a>{{/if}}
+      <p class="text-right font-italic">
 
-        {{#if User.userName}} by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
+        {{#if User.userName}}-by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
 
+      <p class="text-right font-italic mb-1">{{createdAt}}</p>
 
     </div>
-    {{!-- {{> posts/post-block topic=true user=true}} --}}
+
     {{/each}}
   </div>
 
