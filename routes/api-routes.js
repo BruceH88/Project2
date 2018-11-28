@@ -51,19 +51,27 @@ module.exports = function (app) {
 
     });
 
-    app.get("/api/posts/topics/:id", function(req, res){
+    app.get("/api/posts/topics/:id", function (req, res) {
         if (!req.user) {
             return res.redirect("/");
         }
-        
+
         db.Post.findAll({
             where: {
                 TopicId: req.params.id
             },
             include: [db.User, db.Topic]
         }).then(function (dbPosts) {
-            console.log(JSON.stringify(dbPosts));
-            res.render("index", { posts: dbPosts });
+            let topicName = "";
+            if (dbPosts.length > 0) {
+                topicName = dbPosts[0].Topic.topic;
+            }
+            const dbPostData = {
+                topicData: { name: topicName, id: req.params.id },
+                posts: dbPosts
+            };
+            console.log(JSON.stringify(dbPostData));
+            res.render("index", dbPostData);
         });
     })
 

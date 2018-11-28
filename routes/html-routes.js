@@ -24,14 +24,17 @@ module.exports = function (app) {
 
   // signup route takes you to page to sign up
   app.get("/signup", function (req, res) {
-    // res.sendFile(path.join(__dirname, "../public/assets/index.html"));
-    res.render("signup");
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    // res.render("signup");
   });
 
   // default route takes you to the login page
   app.get("/", function (req, res) {
-    // res.sendFile(path.join(__dirname, "../public/assets/index.html"));
-    res.render("login");
+    if (req.user) {
+      return res.redirect("/api/posts");
+    }
+    res.sendFile(path.join(__dirname, "../public/login.html"));
+    // res.render("login");
   });
 
 };
