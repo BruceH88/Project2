@@ -11,7 +11,7 @@ $(function () {
     console.log("post submit was clicked");
 
     const userId = 1;
-    const topicId = 1;  //$("#topicInput").data("id");
+    const topicId = $("#topic-name").data("id");
     const post = $("#postInput").val().trim();
 
     const newPost = {
