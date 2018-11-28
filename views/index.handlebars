@@ -2,16 +2,24 @@
 <div id="page-content-wrapper">
 
   <div class="container mx-auto w-50 py-1 px-1 mt-4">
+    <h1 class="topicName">topic name</h1>
     <textarea id="postInput" rows="10" cols="80">
 
         </textarea>
-      <form autocomplete="off">
-        <div class="autocomplete" style="width:300px;">
-          Topic: <input id="topicInput" type="text" name="Topic" placeholder="eg: Landscapes">
-        </div>
-        <input type="submit" class="postSubmit" value="Submit">
-      </form>
-
+    <form autocomplete="off">
+      <div class="autocomplete" style="width:300px;">
+        Topic: <input id="topicInput" type="text" name="Topic" placeholder="eg: Landscapes">
+      </div>
+      <input type="submit" class="postSubmit" value="Submit">
+    </form>
+    <div class="container chat-container">
+      <button type="submit" class="openChat">topic chat</button>
+      <div class="chatWindow">
+        <div class="chatArea"></div>
+        <input type="text" class="typingArea">
+        <button type="submit" class="chatSubmit">send</button>
+      </div>
+    </div>
   </div>
 
   <div class="container mx-auto w-50 py-1 px-1 mt-4">
@@ -22,21 +30,17 @@
       <p class="text-right font-italic mb-1">{{createdAt}}</p>
 
       {{#if imgSrc}}
-      <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
-      {{/if}}
+      <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class=""> {{/if}}
 
 
       <p class="text-left py-2">{{body}}</p>
 
-      <p class="text-right font-italic">-posted
-        {{#if Topic.topic}} in <a href="/topics/{{Topic.id}}">{{Topic.topic}}</a>{{/if}}
-
+      <p class="text-right font-italic">-posted {{#if Topic.topic}} in <a href="/topics/{{Topic.id}}">{{Topic.topic}}</a>{{/if}}
         {{#if User.userName}} by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
 
 
     </div>
-    {{!-- {{> posts/post-block topic=true user=true}} --}}
-    {{/each}}
+    {{!-- {{> posts/post-block topic=true user=true}} --}} {{/each}}
   </div>
 
 </div>

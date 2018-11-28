@@ -1,3 +1,11 @@
+// chat requirements
+var socket = io.connect("http://localhost:8080");
+var chat;
+var roomsArray = []
+var userName = 'Dhanu90';
+var topics = [];
+
+// =================
 $(function () {
   $(".postSubmit").on("click", function (event) {
     console.log("post submit was clicked");
@@ -150,3 +158,33 @@ var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla"
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("topicInput"), countries);
+
+// var topicData = $(".topic-name").text()
+// console.log("tpic name"+ topicData)
+$(".chatWindow").hide()
+
+$(".openChat").on("click", function(){
+  var topicName = $(".topicName").text();
+  topics.push(topicName)
+  console.log(topics)
+  console.log("topicname here" + topicName)
+
+  $(".openChat").hide();
+  $(".chatWindow").show()
+  // TODO: get topic name from click event on topic list
+  $(".chatSubmit").on("click", function(){
+    chat = $(".typingArea").val();
+    console.log("console" + chat);
+    socket.emit("message", { chat: chat, topic:topicName});
+  })
+
+})
+// =========== SOCKETS =============
+socket.on("new-message", function(data){
+  console.log("back", data)
+  $(".chatArea").append("hushuh", data.chat)
+})
+
+// socket.on("build-rooms", function (data) {
+  
+// })
