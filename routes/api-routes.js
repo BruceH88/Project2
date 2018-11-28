@@ -62,6 +62,10 @@ module.exports = function (app) {
             },
             include: [db.User, db.Topic]
         }).then(function (dbPosts) {
+            dbPosts.topicData = {
+                topicName: "Testing",
+                topicId: req.params.id
+            }
             console.log(JSON.stringify(dbPosts));
             res.render("index", { posts: dbPosts });
         });

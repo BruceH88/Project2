@@ -1,8 +1,10 @@
 <!-- Page Content -->
 <div id="page-content-wrapper">
 
+
+
   <div class="container mx-auto w-50 py-1 px-1 mt-4">
-    <textarea id="postInput" rows="10" cols="80">
+    <textarea id="postInput" rows="5" cols="80">
 
         </textarea>
       <form autocomplete="off">
@@ -29,7 +31,7 @@
       <p class="text-left py-2">{{body}}</p>
 
       <p class="text-right font-italic">-posted
-        {{#if Topic.topic}} in <a href="/topics/{{Topic.id}}">{{Topic.topic}}</a>{{/if}}
+        {{#if Topic.topic}} in <a href="/api/posts/topics/{{Topic.id}}">{{Topic.topic}}</a>{{/if}}
 
         {{#if User.userName}} by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
 
