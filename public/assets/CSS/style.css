@@ -83,6 +83,10 @@ nav a:link, nav a:visited, nav a:hover, nav a:active {
 .main-color {
   color: #42426F;
 }
+.topic-link {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
 
 #top-nav {
   background-color: #42426F;
