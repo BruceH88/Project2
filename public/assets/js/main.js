@@ -1,3 +1,29 @@
+// chat requirements
+var socket = io.connect("http://localhost:8080");
+var chat;
+var roomsArray = []
+var userName = 'Dhanu90';
+var topics = [];
+
+// =================
+$(".chatWindow").hide()
+$(".openChat").on("click", function(){
+  var topicName = $("#topic-name").attr("data-id")
+  console.log("here"+ topicName)
+  $(".openChat").hide();
+  $(".chatWindow").show()
+  socket.emit("joinThisRoom", topicName)
+  $("#send").on("click",function(){
+    chat = $(".type").val();
+    console.log("console" + chat);
+    socket.emit("message", { chat: chat, topic:topicName});
+  })
+})
+
+socket.on("new-message", function(data){
+    console.log("back", data)
+    $(".chat-area").append("hushuh", data.chat)
+  })
 $(function () {
   $(".postSubmit").on("click", function (event) {
     console.log("post submit was clicked");

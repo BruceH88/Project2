@@ -224,3 +224,44 @@ input[type=submit] {
 #postInput {
   width: 100%;
 }
+
+.chat-area{
+  width: 250px;
+  height: 250px;
+  background-color: #7676a5
+}
+.openChat{
+  position: fixed;
+  right: 60px;
+  top: 535px;
+  font-size: 40px
+}
+.chatWindow{
+  position: fixed;
+  right: 20px;
+  bottom: 0px
+}
+#send{
+  position: fixed;
+  font-size: 20px;
+  right: 35px;
+  bottom: 13px;
+  z-index: 3000;
+}
+/* .send-padding{
+  position: fixed;
+  right: 20px;
+  width: 40px;
+  bottom: 0px;
+  z-index: 200;
+  height: 46px;
+
+} */
+.type{
+  position: fixed;
+  /* width: 250px; */
+  right: 20px;
+  bottom: 0px;
+  width: 210px;
+  z-index: 1;
+}
