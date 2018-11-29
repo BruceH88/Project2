@@ -246,7 +246,7 @@ input[type=submit] {
   bottom: 13px;
   z-index: 3000;
 }
-.send-padding{
+/* .send-padding{
   position: fixed;
   right: 20px;
   width: 40px;
@@ -254,7 +254,7 @@ input[type=submit] {
   z-index: 200;
   height: 46px;
 
-}
+} */
 .type{
   position: fixed;
   /* width: 250px; */
