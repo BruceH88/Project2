@@ -35,10 +35,12 @@ $(document).ready(function () {
     $.post("/api/login", 
       userData
     ).then(function (data) {
+      sessionStorage.setItem("username", userData.userName);
       console.log(data);
       window.location.replace(data);
       // If there's an error, log the error
     }).catch(function (err) {
+      sessionStorage.clear();
       console.log(err);
     });
   }
@@ -76,9 +78,11 @@ $(document).ready(function () {
     $.post("/api/signup", 
       userData
     ).then(function (data) {
+      sessionStorage.setItem("username", userData.userName);
       window.location.replace(data);
       // If there's an error, log the error
     }).catch(function (err) {
+      sessionStorage.clear();
       console.log(err);
     });
   }
