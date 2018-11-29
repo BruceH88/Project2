@@ -6,11 +6,13 @@
     <br>
   </div>
   <div class="container mx-auto w-50 py-1 px-1 mt-4">
+    {{#if topicData}}
     <div class="text-center">
       <button type="button" class="btn btn-primary btn-lg text-center" data-toggle="modal" data-target="#postModal">
         Add a post
       </button>
     </div>
+    {{/if}}
     {{#each posts}}
 
         <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded ">

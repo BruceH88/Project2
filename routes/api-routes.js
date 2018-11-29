@@ -43,7 +43,10 @@ module.exports = function (app) {
         }
 
         db.Post.findAll({
-            include: [db.User, db.Topic]
+            include: [db.User, db.Topic],
+            order: [
+                ['id', 'DESC']
+            ]
         }).then(function (dbPosts) {
             console.log(JSON.stringify(dbPosts));
             res.render("index", { posts: dbPosts });
@@ -60,7 +63,10 @@ module.exports = function (app) {
             where: {
                 TopicId: req.params.id
             },
-            include: [db.User, db.Topic]
+            include: [db.User, db.Topic],
+            order: [
+                ['id', 'DESC']
+            ]
         }).then(function (dbPosts) {
             let topicName = "";
             if (dbPosts.length > 0) {
@@ -95,6 +101,7 @@ module.exports = function (app) {
 
     //post a new post 
     app.post("/api/posts", function (req, res) {
+        console.log(req.body);
         db.Post.create(req.body).then(function (dbPost) {
             res.json(dbPost);
         });
@@ -130,7 +137,11 @@ module.exports = function (app) {
         if (!req.user) {
             return res.redirect("/");
         }
-        db.Topic.findAll().then(function (dbTopics) {
+        db.Topic.findAll({
+            order: [
+                ['id', 'DESC']
+            ]
+        }).then(function (dbTopics) {
             console.log(JSON.stringify(dbTopics));
             res.render("topic", { topics: dbTopics });
         });
