@@ -76,8 +76,8 @@ nav a:link, nav a:visited, nav a:hover, nav a:active {
 
 .content-post {
   border-color: #42426F !important;
-  background-color: whitesmoke;
   border-width: 1px !important;
+  background-color: #FFECEE;
 }
 
 .main-color {
@@ -86,7 +86,9 @@ nav a:link, nav a:visited, nav a:hover, nav a:active {
 .topic-link {
   font-size: 1.2rem;
   font-weight: 700;
+  color: #4C1E99 !important;
 }
+
 
 #top-nav {
   background-color: #42426F;

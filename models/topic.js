@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
 
         topic: {
             type: DataTypes.STRING,
+            allowNull: false
             
         }
      
