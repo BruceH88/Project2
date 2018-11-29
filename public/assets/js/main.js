@@ -5,25 +5,37 @@ var roomsArray = []
 var userName = 'Dhanu90';
 var topics = [];
 
-// =================
+// =================CHAT===============================
+// hiding chat window initially
 $(".chatWindow").hide()
+
+// EVENT LISTENER : for chat button
+// 1. grabs the topic name stores it in variable 
+// 2. hides chat icon and shows chat window
 $(".openChat").on("click", function(){
   var topicName = $("#topic-name").attr("data-id")
   console.log("here"+ topicName)
   $(".openChat").hide();
   $(".chatWindow").show()
+  // Emits the topicname to the server and name (event)it "joinThisRoom"
   socket.emit("joinThisRoom", topicName)
+
+  // EVENT LISTENER  : for send button
+  // grabs the text in input tag and stores it in variable
   $("#send").on("click",function(){
     chat = $(".type").val();
     console.log("console" + chat);
+    // Emits the chat and topicname to the server as an object and name (event)it "message"  
     socket.emit("message", { chat: chat, topic:topicName});
   })
 })
 
+// on receiving the data named "new-message" from server puts it to the chat window
 socket.on("new-message", function(data){
     console.log("back", data)
-    $(".chat-area").append("hushuh", data.chat)
+    $(".chat-area").append("USER says: ", data.chat)
   })
+// ====================================== CHAT ENDS HERE ===============================
 $(function () {
   $(".postSubmit").on("click", function (event) {
     console.log("post submit was clicked");
