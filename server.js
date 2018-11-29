@@ -48,8 +48,10 @@ require("./routes/html-routes.js")(app);
 // ==========================================
 // chat:
 io.on("connection", function (socket) {
-
-  socket.join(topicName);
+  socket.on("joinThisRoom",function(roomName){
+    socket.join(roomName)
+  })
+  // socket.join(topicName);
   // on receiving message from client console log the message
   // socket. is used for single and io. is used for everyone
   socket.on("message", function (data) {
