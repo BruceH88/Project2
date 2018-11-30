@@ -226,10 +226,21 @@ input[type=submit] {
 /* CSS for chat */
 
 .chat-area{
-  width: 250px;
+  /* width: 250px;
   height: 250px;
-  background-color: #7676a5
+  background-color: #7676a5;
+  padding: 5px 5px 46px 5px;
+  overflow: scroll; */
+
+    width: 50vw;
+    min-width: 300px;
+    background-color: #7676a5;
+    overflow-y: scroll;
+    text-align: left;
+    padding: 10px;
 }
+  
+
 .openChat{
   position: fixed;
   right: 60px;
@@ -247,12 +258,21 @@ input[type=submit] {
   right: 35px;
   bottom: 13px;
   z-index: 3000;
+  cursor: pointer;
 }
 .type{
-  position: fixed;
   width: 250px !important;
   right: 20px;
   bottom: 0px;
   width: 210px;
   z-index: 1;
+}
+
+.min{
+  float: right;
+  width: 30px;
+  height: 30px;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: #f1f1f1
 }
