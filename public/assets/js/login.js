@@ -19,6 +19,7 @@ $(document).ready(function () {
     };
     // console.log(userData)
     if (!userData.userName || !userData.password) {
+      alert("Please Enter Valid Log in Details")
       return;
     }
 

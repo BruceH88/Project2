@@ -16,10 +16,9 @@ const PORT = process.env.PORT || 8080;
 // Requiring our models for syncing
 const db = require("./models");
 // =======================================================
-// chat:
+// chat: requirements
 var server = require("http").Server(app);//built in with express??
 var io = require("socket.io")(server);// socket.io
-var roomArray = [];
 
 //========================================================
 
@@ -45,19 +44,20 @@ app.set("view engine", "handlebars");
 require("./routes/login-api-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
-// ==========================================
-// chat:
+
+// chat:========================================================
+// on connection with client run cb function
 io.on("connection", function (socket) {
-  socket.on("joinThisRoom",function(roomName){
+  // on receiving the data named "joinThisRoom" from client creates and joins the chat room with topicname received from client 
+  socket.on("joinThisRoom", function (roomName) {
     socket.join(roomName)
   })
-  // socket.join(topicName);
   // on receiving message from client console log the message
   // socket. is used for single and io. is used for everyone
   socket.on("message", function (data) {
-    console.log("received messAGE",data);
-
-    // send back data that server received
+    console.log("received messAGE", data);
+    // send the received "message" back to client and named as "new-message" 
+    // to display the conversation going on in chat window
     io.to(data.topic).emit('new-message', data);
   });
 });
@@ -67,6 +67,7 @@ io.on("connection", function (socket) {
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: false }).then(function () {
+  // as we have used server here for socket.io we will use server.listen instead of app.listen
   server.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
