@@ -1,9 +1,9 @@
 <!-- Page Content -->
 <div id="page-content-wrapper">
-
+  {{!-- <h2 class="arrow-hide arrow"><a href="#menu-toggle" class="sidebar-toggle"><span class="badge badge-light"><i class="fas fa-arrow-circle-left"></i></span></a></h2> --}}
   <div class="text-center">
     {{!-- topicData.id changed to topcData.name --}}
-    <h1 id="topic-name" data-id="{{topicData.name}}">{{topicData.name}}</h1>
+    <h1 id="topic-name" data-name="{{topicData.name}}" data-id="{{topicData.id}}">{{topicData.name}}</h1>
     <br>
   </div>
   <div class="container mx-auto w-50 py-1 px-1 mt-4">
@@ -17,14 +17,13 @@
         <div class="chat-area">
           <input type="text" class="type">
           <div class="send-padding">
-          <i id="send" class="far fa-paper-plane"></i>
+            <i id="send" class="far fa-paper-plane"></i>
           </div>
           {{!-- <button id="send">SEND</button> --}}
         </div>
       </div>
     </div>
-    {{/if}}
-    {{#each posts}}
+    {{/if}} {{#each posts}}
 
 
     <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded">
@@ -58,6 +57,7 @@
       <div class="modal-content">
         <div class="modal-body">
           <textarea id="postInput" rows="6" placeholder="&nbsp; Write your post here"></textarea>
+          <i class="fas fa-upload"></i>
         </div>
         <div class="modal-footer">
           <input type="submit" class="postSubmit" value="Submit">

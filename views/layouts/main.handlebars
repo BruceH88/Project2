@@ -24,11 +24,9 @@
     <a class="navbar-brand page-title" id="" href="index.html">Untitled Social Media Platform</a>
     <a href="#" class="ml-auto mr-4 page-title">(User)</a>
     <a href="#" class="mr-4 page-title">Categories</a>
-    <a href="#menu-toggle" class="btn btn-secondary sidebar-toggle">Toggle Menu</a>
   </nav>
   <!-- <button type="button" class="btn btn-default rounded-circle" aria-label="Left Align"> -->
 
-  <h2 id="arrow" class="arrow-hide"><a><span class="badge badge-light"><i class="fas fa-arrow-circle-right"></i></span></a></h2>
   <!-- </button> -->
 
   <div id="wrapper" class="toggled">
@@ -67,6 +65,10 @@
       </ul>
     </div>
     <!-- /#sidebar-wrapper -->
+  <h2  class="arrow-hide arrow"><a href="#menu-toggle" class="sidebar-toggle"><span class="badge badge-light"><i class="fas fa-arrow-circle-right"></i></span></a></h2>
+
+  <h2  class="arrow"><a href="#menu-toggle" class="sidebar-toggle"><span class="badge badge-light"><i class="fas fa-arrow-circle-left"></i></span></a></h2>
+
 
   {{{body}}}
 
@@ -103,7 +105,7 @@
   <script>
 
     function arrowToggle() {
-      $("#arrow").toggleClass("arrow-hide");
+      $(".arrow").toggleClass("arrow-hide");
     };
 
     $(".sidebar-toggle").click(function (e) {
