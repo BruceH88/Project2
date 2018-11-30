@@ -76,6 +76,7 @@ module.exports = function (app) {
 
     //post a new post 
     app.post("/api/posts", function (req, res) {
+        req.body.UserId = req.user.id;
         // console.log(req.body);
         db.Post.create(req.body).then(function (dbPost) {
             res.json(dbPost);
