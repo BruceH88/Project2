@@ -8,14 +8,14 @@ module.exports = function (app) {
   app.post('/api/login',
     passport.authenticate('local'),
     function (req, res) {
-      console.log("redirecting to posts");
+      // console.log("redirecting to posts");
       res.json("/api/posts");
     }
   );
 
   app.post("/api/signup", function (req, res) {
-    console.log("API post new user");
-    console.log(req.body);
+    // console.log("API post new user");
+    // console.log(req.body);
     db.User.create(
       req.body
     ).then(function (userInfo) {
@@ -25,7 +25,7 @@ module.exports = function (app) {
           console.log(err)
           return res.status(422).json(err);
         }
-        console.log(req.user);
+        // console.log(req.user);
         return res.json("/api/posts");
       });
     }).catch(function (err) {
