@@ -1,10 +1,38 @@
 
 // Import the model (burger.js) to use its database functions.
 var db = require("../models");
+var moment = require("moment");
+
 
 module.exports = function (app) {
 
     // all the routers for the users 
+    app.get("/users/:id", function (req, res) {
+        if (!req.user) {
+            return res.redirect("/");
+        }
+
+        db.Post.findAll({
+            where: {
+                UserId: req.params.id
+            },
+            include: [db.User, db.Topic],
+            order: [
+                ['id', 'DESC']
+            ]
+        }).then(function (dbPosts) {
+            let userName = "";
+            if (dbPosts.length > 0) {
+                userName = dbPosts[0].User.userName;
+            }
+            const dbPostData = {
+                userData: { name: userName, id: req.params.id },
+                posts: dbPosts
+            };
+            // console.log(JSON.stringify(dbPostData));
+            res.render("index", dbPostData);
+        });
+    })
     //get this user's post
     // app.get("/api/users/:id", function (req, res) {
     //     db.User.findOne({
@@ -40,7 +68,13 @@ module.exports = function (app) {
                 ['id', 'DESC']
             ]
         }).then(function (dbPosts) {
-            // console.log(JSON.stringify(dbPosts));
+            var format = "YYYY-MM-DD";
+            var hourmat = "hh:mm a";
+            for (i = 0; i < dbPosts.length; i++) {
+                dbPosts[i].newTimeStamp = `${moment(dbPosts[i].createdAt).format(format)} at ${moment(dbPosts[i].createdAt).format(hourmat)}`
+            }
+            console.log(JSON.parse(JSON.stringify(dbPosts)));
+
             res.render("index", { posts: dbPosts });
         });
 
@@ -118,6 +152,11 @@ module.exports = function (app) {
                 ['id', 'DESC']
             ]
         }).then(function (dbTopics) {
+            for (i = 0; i < dbTopics.length; i++) {
+                var format = "YYYY-MM-DD";
+                var hourmat = "hh:mm a";
+                dbTopics[i].newTimeStamp = `${moment(dbTopics[i].createdAt).format(format)} at ${moment(dbTopics[i].createdAt).format(hourmat)}`
+            }
             // console.log(JSON.stringify(dbTopics));
             res.render("topic", { topics: dbTopics });
         });
