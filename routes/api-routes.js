@@ -1,6 +1,8 @@
 
 // Import the model (burger.js) to use its database functions.
 var db = require("../models");
+var moment = require("moment");
+
 
 module.exports = function (app) {
 
@@ -48,7 +50,13 @@ module.exports = function (app) {
                 ['id', 'DESC']
             ]
         }).then(function (dbPosts) {
-            console.log(JSON.stringify(dbPosts));
+            var format = "YYYY-MM-DD";
+            var hourmat = "hh:mm a";
+            for (i = 0; i < dbPosts.length; i++) {
+                dbPosts[i].newTimeStamp = `${moment(dbPosts[i].createdAt).format(format)} at ${moment(dbPosts[i].createdAt).format(hourmat)}`
+            }
+            console.log(JSON.parse(JSON.stringify(dbPosts)));
+
             res.render("index", { posts: dbPosts });
         });
 
@@ -101,6 +109,7 @@ module.exports = function (app) {
 
     //post a new post 
     app.post("/api/posts", function (req, res) {
+        req.body.UserId = req.user.id;
         console.log(req.body);
         db.Post.create(req.body).then(function (dbPost) {
             res.json(dbPost);
@@ -142,6 +151,11 @@ module.exports = function (app) {
                 ['id', 'DESC']
             ]
         }).then(function (dbTopics) {
+            for (i = 0; i < dbTopics.length; i++) {
+                var format = "YYYY-MM-DD";
+                var hourmat = "hh:mm a";
+                dbTopics[i].newTimeStamp = `${moment(dbTopics[i].createdAt).format(format)} at ${moment(dbTopics[i].createdAt).format(hourmat)}`
+            }
             console.log(JSON.stringify(dbTopics));
             res.render("topic", { topics: dbTopics });
         });

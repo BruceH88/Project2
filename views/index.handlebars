@@ -3,7 +3,7 @@
 
   <div class="text-center">
     {{!-- topicData.id changed to topcData.name --}}
-    <h1 id="topic-name" data-id="{{topicData.name}}">{{topicData.name}}</h1>
+    <h1 id="topic-name" data-id="{{topicData.id}}">{{topicData.name}}</h1>
     <br>
   </div>
   <div class="container mx-auto w-50 py-1 px-1 mt-4">
@@ -13,11 +13,12 @@
         Add a post
       </button>
       {{!-- <button type="submit" class="openChat btn btn-primary btn-lg text-center">chat</button> --}}
+      <p id="user-name-cheese" class="arrow-hide"></p>
       <div class="chatWindow">
-        <div class="chat-area">
-          <input type="text" class="type">
+        <div class="chat-area rounded-top text-left py-2 px-3">
+          <input type="text" class="type" id="chat-input">
           <div class="send-padding">
-          <i id="send" class="far fa-paper-plane"></i>
+            <i id="send" class="far fa-paper-plane"></i>
           </div>
           {{!-- <button id="send">SEND</button> --}}
         </div>
@@ -26,48 +27,52 @@
     {{/if}}
     {{#each posts}}
 
-        <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded ">
-        <p class="text-left font-italic mb-1">{{#if Topic.topic}} -posted in <a href="/api/posts/topics/{{Topic.id}}"
-            class="topic-link">{{Topic.topic}}</a>{{/if}}</p>
+    <div class=" text-center my-3 py-2 px-2 border border-secondary content-post rounded">
 
-        {{#if imgSrc}}
-        <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
-        {{/if}}
-
-      <p class="text-left font-italic mb-1">{{#if Topic.topic}} -posted in <a href="/api/posts/topics/{{Topic.id}}" class="topic-link">{{Topic.topic}}</a>{{/if}}</p>
+      <p class="text-left font-italic mb-1">{{#if Topic.topic}} -posted in <a href="/api/posts/topics/{{Topic.id}}"
+          class="topic-link">{{Topic.topic}}</a>{{/if}}</p>
 
       {{#if imgSrc}}
-      <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class=""> {{/if}}
+      <img src="{{imgSrc}}" alt="{{imgAlt}}" width="90%" class="">
+      {{/if}}
 
-        <p class="text-right font-italic">
-
-          {{#if User.userName}}-by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
-
-          <p class="text-right font-italic mb-1">{{createdAt}}</p>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+      <p class="text-left py-2">{{body}}</p>
 
       </div>
-      {{/each}}
-    </div>
+      <div class="col-2"></div>
+      </div>
 
+      <p class="text-right font-italic">
+
+        {{#if User.userName}}-by <a href="/users/{{User.id}}">{{User.userName}}</a>{{/if}}
+
+        <p class="text-right font-italic mb-1 created-at-moment">{{newTimeStamp}}</p>
+
+    </div>
     {{/each}}
   </div>
-  <span class="chat-icon">
-    <div class="container">
-      <i class="fab fa-rocketchat openChat"></i>
-    </div>
-  </span>
 
-  <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <textarea id="postInput" rows="6" placeholder="&nbsp; Write your post here"></textarea>
-        </div>
-        <div class="modal-footer">
-          <input type="submit" class="postSubmit" value="Submit">
-        </div>
+</div>
+<span class="chat-icon">
+  <div class="container">
+    <i class="fab fa-rocketchat openChat"></i>
+  </div>
+</span>
+
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <textarea id="postInput" rows="6" placeholder="&nbsp; Write your post here"></textarea>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class="postSubmit" value="Submit">
       </div>
     </div>
-
   </div>
-  <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#page-content-wrapper -->

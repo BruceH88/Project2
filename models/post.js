@@ -14,6 +14,11 @@ module.exports = function(sequelize, DataTypes) {
             allowNull:false
             
         },
+        newTimeStamp: {
+          type: DataTypes.TEXT,
+          allowNull:true
+          
+      }
      
     });
   

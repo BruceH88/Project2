@@ -13,6 +13,8 @@ body {
 footer {
   color: #42426F;
   background-color: whitesmoke;
+  position: relative;
+  z-index: -1;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -173,15 +175,19 @@ nav a:link, nav a:visited, nav a:hover, nav a:active {
   display: inline-block;
 }
 
+.footer-z {
+  positio
+}
+
 input {
   border: 1px solid transparent;
-  background-color: #f1f1f1;
+  background-color: #ffecee;
   padding: 10px;
   font-size: 16px;
 }
 
 input[type=text] {
-  background-color: #f1f1f1;
+  background-color: #ffecee;
   width: 100%;
 }
 
@@ -228,7 +234,8 @@ input[type=submit] {
 .chat-area{
   width: 250px;
   height: 250px;
-  background-color: #7676a5
+  background-color: #7676a5;
+  color: whitesmoke;
 }
 .openChat{
   position: fixed;
@@ -238,15 +245,16 @@ input[type=submit] {
 }
 .chatWindow{
   position: fixed;
-  right: 20px;
+  right: 30px;
   bottom: 0px
 }
 #send{
   position: fixed;
-  font-size: 20px;
+  font-size: 30px;
   right: 35px;
   bottom: 13px;
   z-index: 3000;
+  color: black;
 }
 /* .send-padding{
   position: fixed;
@@ -260,8 +268,8 @@ input[type=submit] {
 .type{
   position: fixed;
   /* width: 250px; */
-  right: 20px;
+  right: 30px;
   bottom: 0px;
-  width: 210px;
-  z-index: 1;
+  width: 250px !important;
+  z-index: 3;
 }
