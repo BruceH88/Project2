@@ -7,6 +7,32 @@ var moment = require("moment");
 module.exports = function (app) {
 
     // all the routers for the users 
+    app.get("/users/:id", function (req, res) {
+        if (!req.user) {
+            return res.redirect("/");
+        }
+
+        db.Post.findAll({
+            where: {
+                UserId: req.params.id
+            },
+            include: [db.User, db.Topic],
+            order: [
+                ['id', 'DESC']
+            ]
+        }).then(function (dbPosts) {
+            let userName = "";
+            if (dbPosts.length > 0) {
+                userName = dbPosts[0].User.userName;
+            }
+            const dbPostData = {
+                userData: { name: userName, id: req.params.id },
+                posts: dbPosts
+            };
+            // console.log(JSON.stringify(dbPostData));
+            res.render("index", dbPostData);
+        });
+    })
     //get this user's post
     // app.get("/api/users/:id", function (req, res) {
     //     db.User.findOne({

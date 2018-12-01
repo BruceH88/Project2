@@ -90,8 +90,8 @@ $(function () {
 
 })
 
-$("#chat-input").keypress(function (event) {
-  var keycode = event.keyCode || event.which;
+$("#chat-input").keypress(function (bevent) {
+  var keycode = bevent.keyCode || bevent.which;
   if (keycode == '13') {
     $("#send").trigger("click");
     $("#chat-input").val('');
@@ -100,5 +100,5 @@ $("#chat-input").keypress(function (event) {
 // })
 
 $(document).ready(function () {
-  $("#displayUserName").append(sessionStorage.getItem("username"));
+  $("#displayUserName").append(`<a href="/users/1">${sessionStorage.getItem("username")}</a>`);
 });

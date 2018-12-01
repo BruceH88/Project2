@@ -85,6 +85,10 @@ nav a:link, nav a:visited, nav a:hover, nav a:active {
 .main-color {
   color: #42426F;
 }
+.bg-main-color {
+  background-color: #4C1E99;
+  color: whitesmoke;
+}
 .topic-link {
   font-size: 1.2rem;
   font-weight: 700;
@@ -175,9 +179,6 @@ nav a:link, nav a:visited, nav a:hover, nav a:active {
   display: inline-block;
 }
 
-.footer-z {
-  positio
-}
 
 input {
   border: 1px solid transparent;
@@ -186,13 +187,14 @@ input {
   font-size: 16px;
 }
 
-input[type=text] {
+input[type=text], input[type=password], input[type=email] {
   background-color: #ffecee;
   width: 100%;
 }
 
+
 input[type=submit] {
-  background-color: DodgerBlue;
+  background-color: #42426F;
   color: #fff;
   cursor: pointer;
 }
@@ -240,13 +242,14 @@ input[type=submit] {
   padding: 5px 5px 46px 5px;
   overflow: scroll; */
   
-  width: 50vw;
-  min-width: 300px;
-  background-color: #7676a5;
-  overflow-y: scroll;
-  text-align: left;
-  padding: 10px;
-  color: whitesmoke;
+    width: 350px;
+    min-width: 350px;
+    height: 350px;
+    background-color: #7676a5;
+    overflow-y: scroll;
+    text-align: left;
+    padding: 10px;
+    color: whitesmoke;
 }
   
 
@@ -259,7 +262,7 @@ input[type=submit] {
 .chatWindow{
   position: fixed;
   right: 30px;
-  bottom: 0px
+  bottom: 0px;
 }
 #send{
   position: fixed;
@@ -271,7 +274,7 @@ input[type=submit] {
   cursor: pointer;
 }
 .type{
-  width: 250px !important;
+  width: 350px !important;
   right: 20px;
   bottom: 0px;
   width: 210px;
@@ -285,4 +288,14 @@ input[type=submit] {
   border: 1px solid;
   cursor: pointer;
   background-color: #f1f1f1
+}
+
+.fixed {
+  position: fixed;
+  z-index: 8;
+}
+
+#main-title {
+  font-family: 'Lobster', cursive;
+  font-size: 1.5rem;
 }
