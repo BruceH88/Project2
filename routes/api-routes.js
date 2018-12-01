@@ -8,32 +8,24 @@ module.exports = function (app) {
 
     // all the routers for the users 
     //get this user's post
-    app.get("/api/users/:id", function (req, res) {
-        db.User.findOne({
-            where: {
-                id: req.params.id
-            },
-            include: [db.Post]
-        }).then(function (dbUser) {
-            res.json(dbUser);
-        });
-    });
-
-    // get all the information, including users' info and post of the user  --- worked
-    app.get("/api/users", function (req, res) {
-        db.User.findAll({
-            include: [db.Post]
-        }).then(function (dbUser) {
-            res.json(dbUser);
-        })
-    });
-
-    // Done in login-api-routes.js
-    // // create a new user  --- worked
-    // app.post("/api/users/newUser", function (req, res) {
-    //     db.User.create(req.body).then(function (dbUser) {
+    // app.get("/api/users/:id", function (req, res) {
+    //     db.User.findOne({
+    //         where: {
+    //             id: req.params.id
+    //         },
+    //         include: [db.Post]
+    //     }).then(function (dbUser) {
     //         res.json(dbUser);
     //     });
+    // });
+
+    // get all the information, including users' info and post of the user  --- worked
+    // app.get("/api/users", function (req, res) {
+    //     db.User.findAll({
+    //         include: [db.Post]
+    //     }).then(function (dbUser) {
+    //         res.json(dbUser);
+    //     })
     // });
 
 
@@ -84,61 +76,44 @@ module.exports = function (app) {
                 topicData: { name: topicName, id: req.params.id },
                 posts: dbPosts
             };
-            console.log(JSON.stringify(dbPostData));
+            // console.log(JSON.stringify(dbPostData));
             res.render("index", dbPostData);
         });
     })
 
-    // app.get("/api/posts", function (req, res) {
-    //     var query = {};
-    //     if (req.query.user_id) {
-    //         query.UserId = req.query.user_id;
-    //     }
-    //     // Here we add an "include" property to our options in our findAll query
-    //     // We set the value to an array of the models we want to include in a left outer join
-    //     // In this case, just db.User
-    //     db.Post.findAll({
-    //         where: query,
-    //         include: [db.User]
-    //     }).then(function (dbPost) {
-    //         console.log(dbPost);
-    //         res.render(dbPost);
-    //         // res.json(dbPost);
-    //     });
-    // });
 
     //post a new post 
     app.post("/api/posts", function (req, res) {
         req.body.UserId = req.user.id;
-        console.log(req.body);
+        // console.log(req.body);
         db.Post.create(req.body).then(function (dbPost) {
             res.json(dbPost);
         });
     });
 
     // PUT route for updating posts
-    app.put("/api/posts", function (req, res) {
-        db.Post.update(
-            req.body,
-            {
-                where: {
-                    id: req.body.id
-                }
-            }).then(function (dbPost) {
-                res.json(dbPost);
-            });
-    });
+    // app.put("/api/posts", function (req, res) {
+    //     db.Post.update(
+    //         req.body,
+    //         {
+    //             where: {
+    //                 id: req.body.id
+    //             }
+    //         }).then(function (dbPost) {
+    //             res.json(dbPost);
+    //         });
+    // });
 
     // delete the post
-    app.delete("/api/posts/:id", function (req, res) {
-        db.Post.destroy({
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbPost) {
-            res.json(dbPost)
-        });
-    });
+    // app.delete("/api/posts/:id", function (req, res) {
+    //     db.Post.destroy({
+    //         where: {
+    //             id: req.params.id
+    //         }
+    //     }).then(function (dbPost) {
+    //         res.json(dbPost)
+    //     });
+    // });
 
     // All the routes for Topics
     // GET route for getting all of the topics
@@ -156,7 +131,7 @@ module.exports = function (app) {
                 var hourmat = "hh:mm a";
                 dbTopics[i].newTimeStamp = `${moment(dbTopics[i].createdAt).format(format)} at ${moment(dbTopics[i].createdAt).format(hourmat)}`
             }
-            console.log(JSON.stringify(dbTopics));
+            // console.log(JSON.stringify(dbTopics));
             res.render("topic", { topics: dbTopics });
         });
     });
