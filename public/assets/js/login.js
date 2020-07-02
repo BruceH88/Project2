@@ -58,12 +58,12 @@ $(document).ready(function () {
       lastName: lastNameInput.val().trim(),
       email: emailInput.val().trim()
     };
-
+    
     console.log(userData);
     if (!userData.email || !userData.password || !userData.firstName || !userData.lastName || !userData.email) {
       return;
     }
-
+    
     // If we have an email and password we run the loginUser function and clear the form
     signupUser(userData);
     userNameInput.val('');
@@ -72,12 +72,12 @@ $(document).ready(function () {
     lastNameInput.val('');
     emailInput.val('');
   });
-
+  
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function signupUser(userData) {
     console.log("Add user");
     $.post("/api/signup", 
-      userData
+    userData
     ).then(function (data) {
       sessionStorage.setItem("username", userData.userName);
       window.location.replace(data);
@@ -87,5 +87,16 @@ $(document).ready(function () {
       console.log(err);
     });
   }
-
+  
+  $.get("/api/posts", 
+  ).then(function (data) {
+  console.log(JSON.parse(JSON.stringify(data)));
+  // for (i=0; i<data.length; i++) {
+  //  if 
+  // }
+  }).catch(function (err) {
+  sessionStorage.clear();
+  console.log(err);
+  });
+  
 });

@@ -100,5 +100,5 @@ $("#chat-input").keypress(function (bevent) {
 // })
 
 $(document).ready(function () {
-  $("#displayUserName").append(`<a href="/users/1">${sessionStorage.getItem("username")}</a>`);
+  $("#displayUserName").append(`<a href="/users/${sessionStorage.getItem("username")}">${sessionStorage.getItem("username")}</a>`);
 });

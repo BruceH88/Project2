@@ -7,14 +7,14 @@ var moment = require("moment");
 module.exports = function (app) {
 
     // all the routers for the users 
-    app.get("/users/:id", function (req, res) {
+    app.get("/users/:userName", function (req, res) {
         if (!req.user) {
             return res.redirect("/");
         }
 
         db.Post.findAll({
             where: {
-                UserId: req.params.id
+                "User.userName": req.params.userName
             },
             include: [db.User, db.Topic],
             order: [
